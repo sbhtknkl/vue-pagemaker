@@ -1,0 +1,187 @@
+{
+  "success": true,
+  "return": {
+    "external_page": {
+      "pm::Type": "container",
+      "pm::Meta": {
+        "pm::className": "external-test-page",
+        "padding": "30px",
+        "background": "#f8f9fa",
+        "borderRadius": "12px",
+        "margin": "20px"
+      },
+      
+      "page_title": {
+        "pm::type": "label",
+        "element": "h2",
+        "label": "External JSON Test Page",
+        "pm::Meta": {
+          "color": "#2c3e50",
+          "marginBottom": "20px",
+          "textAlign": "center"
+        }
+      },
+      
+      "description": {
+        "pm::type": "label",
+        "element": "p",
+        "label": "This page was loaded from an external JSON file, demonstrating the dynamic metadata loading capability.",
+        "pm::Meta": {
+          "fontSize": "16px",
+          "color": "#6c757d",
+          "marginBottom": "30px",
+          "textAlign": "center"
+        }
+      },
+      
+      "user_form": {
+        "pm::Type": "form",
+        "pm::Meta": {
+          "label": "User Information Form",
+          "padding": "25px",
+          "background": "white",
+          "borderRadius": "8px",
+          "boxShadow": "0 2px 10px rgba(0,0,0,0.1)",
+          "marginBottom": "20px"
+        },
+        
+        "first_name": {
+          "pm::type": "input",
+          "label": "First Name:",
+          "name": "firstName",
+          "placeholder": "Enter your first name",
+          "required": true,
+          "validation": [
+            { "type": "required", "message": "First name is required" }
+          ]
+        },
+        
+        "last_name": {
+          "pm::type": "input",
+          "label": "Last Name:",
+          "name": "lastName",
+          "placeholder": "Enter your last name",
+          "required": true,
+          "validation": [
+            { "type": "required", "message": "Last name is required" }
+          ]
+        },
+        
+        "email_address": {
+          "pm::type": "email",
+          "label": "Email Address:",
+          "name": "email",
+          "placeholder": "Enter your email address",
+          "required": true,
+          "validation": [
+            { "type": "required", "message": "Email is required" },
+            { "type": "email", "message": "Please enter a valid email address" }
+          ]
+        },
+        
+        "phone_number": {
+          "pm::type": "phone",
+          "label": "Phone Number:",
+          "name": "phone",
+          "placeholder": "(555) 123-4567"
+        },
+        
+        "department": {
+          "pm::type": "select",
+          "label": "Department:",
+          "name": "department",
+          "placeholder": "Select a department",
+          "required": true,
+          "options": [
+            { "key": "engineering", "label": "Engineering" },
+            { "key": "marketing", "label": "Marketing" },
+            { "key": "sales", "label": "Sales" },
+            { "key": "support", "label": "Customer Support" },
+            { "key": "hr", "label": "Human Resources" }
+          ]
+        },
+        
+        "form_buttons": {
+          "pm::Type": "container",
+          "pm::Meta": {
+            "display": "flex",
+            "gap": "15px",
+            "marginTop": "25px",
+            "justifyContent": "center"
+          },
+          
+          "save_button": {
+            "pm::type": "button",
+            "pm::title": "Save Information",
+            "pm::Meta": {
+              "background": "#28a745",
+              "color": "white",
+              "padding": "12px 24px",
+              "borderRadius": "6px",
+              "border": "none",
+              "fontSize": "16px"
+            },
+            "onclick": [{
+              "action": "submit",
+              "url": "/api/save-user",
+              "onSuccess": {
+                "action": "broadcast",
+                "event": "userSaved",
+                "target": "notification"
+              }
+            }]
+          },
+          
+          "reset_button": {
+            "pm::type": "button",
+            "pm::title": "Reset Form",
+            "pm::Meta": {
+              "background": "#6c757d",
+              "color": "white",
+              "padding": "12px 24px",
+              "borderRadius": "6px",
+              "border": "none",
+              "fontSize": "16px"
+            },
+            "onclick": [{
+              "action": "broadcast",
+              "event": "resetForm",
+              "target": "user_form"
+            }]
+          }
+        }
+      },
+      
+      "info_section": {
+        "pm::Type": "container",
+        "pm::Meta": {
+          "background": "#e7f3ff",
+          "padding": "20px",
+          "borderRadius": "8px",
+          "border": "1px solid #b3d9ff"
+        },
+        
+        "info_title": {
+          "pm::type": "label",
+          "element": "h4",
+          "label": "📝 External Metadata Features",
+          "pm::Meta": {
+            "color": "#0056b3",
+            "marginBottom": "15px"
+          }
+        },
+        
+        "features_list": {
+          "pm::type": "label",
+          "element": "div",
+          "label": "• Dynamic JSON loading from external files<br>• Form validation with custom rules<br>• Action system for button interactions<br>• Container layouts with flexible styling<br>• Select dropdowns with predefined options",
+          "pm::Meta": {
+            "fontSize": "14px",
+            "lineHeight": "1.8",
+            "color": "#495057"
+          }
+        }
+      }
+    }
+  }
+} 
